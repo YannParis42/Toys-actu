@@ -256,7 +256,7 @@ class NewsController extends AbstractController
             if(file_exists($nomPhoto)){
                 unlink($nomPhoto);
             }
-         }
+        }
 
         if ($this->isCsrfTokenValid('delete'.$news->getId(), $request->request->get('_token'))) {
             $newsRepository->remove($news, true);
@@ -268,7 +268,7 @@ class NewsController extends AbstractController
     #[Route('/{id}/delete', name: 'app_news_delete_user', methods: ['POST'])]
     public function deleteByUser(Request $request, News $news, NewsRepository $newsRepository): Response
     {
-           $photo = $news->getNewsPhoto();
+        $photo = $news->getNewsPhoto();
         
         if($photo){
             $nomPhoto = $this->getParameter('photo_directory').'/'.$photo;
