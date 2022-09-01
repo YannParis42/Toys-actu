@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back office{% endblock %}
+
+{% block content %}
+<div class="mx-4 ">
+    <div class="row p-4">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="small-box bg-gradient-success ">
+                <div class="inner">
+                    <h3>{{ users }}</h3>
+                    <p>Nombre d'utilisateurs</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <a href="{{path('app_user_index')}}" class="small-box-footer">
+                    Plus d'informations <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="small-box bg-gradient-primary">
+                <div class="inner">
+                    <h3>{{ news }}</h3>
+                    <p>Nombre d'actus</p>
+                </div>
+                <div class="icon">
+                    <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <a href="{{path('app_news_index')}}" class="small-box-footer">
+                    Plus d'informations <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="small-box bg-gradient-warning">
+                <div class="inner">
+                    <h3>{{ categories }}</h3>
+                    <p>Nombre de categories</p>
+                </div>
+                <div class="icon">
+                    <i class="fa-solid fa-dna"></i>
+                </div>
+                <a href="{{path('app_category_index')}}" class="small-box-footer">
+                    Plus d'informations <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

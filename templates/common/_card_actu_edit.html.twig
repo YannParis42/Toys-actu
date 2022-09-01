@@ -1,0 +1,16 @@
+<div class="card actu m-2" style="width: 18rem;">
+    {% if  actu.newsPhoto %}
+    <img src="{{asset('uploads/photo/'~actu.newsPhoto)}}" class="card-img-top mt-2 cardImg" alt="{{actu.newsPhoto}}">
+    {% else %}
+    <img src="{{asset('uploads/photo/noPhoto.jpg')}}" class="card-img-top mt-2 cardImg">
+    {% endif %}
+    <a href="{{ path('app_news_edit_user', {'id': actu.id}) }}" class="card-body">
+        <h5 class="card-title">{{actu.title}}</h5><br>
+        <h6 class="card-text mb-2 ">{{actu.releaseDate| date('d F Y')}}</h6>
+        <div class="d-flex">
+            <p class="card-text">{{actu.descriptionShort}}</p> 
+            <span class="badge rounded-pill m-auto modified ">Modifier</span>
+        </div>
+
+    </a>
+</div>

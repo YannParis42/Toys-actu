@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-light lineaireTop py-2">
+  <div class="container-fluid justify-content-between">
+
+    <a class="navbar-brand svg d-flex" href="/">
+      <img class="logo me-2" src="{{asset('uploads/logo.png')}}" alt="">
+      <h2>Toys Actus</h2>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon "><i class="fa-solid fa-bars orange"></i></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        {{ render(path('app_category_all'))}}
+        {% if app.user==null %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{path('app_login')}}">Connexion</a>
+        </li>
+        {% endif %}
+
+        {% if app.user %}
+
+        {% if is_granted('ROLE_ADMIN')  %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"
+            href="{{path('app_admin_news', {'id': app.user.id})}}">Back-office</a>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ path('app_news_user', {'id': app.user.id}) }}">
+            Mes actualités</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{path('app_login', {'id': app.user.id})}}">
+            {{app.user.username}}</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{path('app_logout')}}">
+            <i class="fa-solid fa-door-open"></i></a>
+        </li>
+
+        {% endif %}
+
+      </ul>
+    </div>
+</nav>

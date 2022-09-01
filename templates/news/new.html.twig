@@ -1,0 +1,27 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Nouvelle actu{% endblock %}
+
+{% block content %}
+
+{% if app.user %}
+  <div class="m-4">
+    <h1>Nouvelle actualité</h1>
+    <hr>
+    <a type="button" class="btn btn-primary" href="{{ path('app_news_user', {'id': app.user.id}) }}">Retour</a>
+    <hr>
+    <div class="edit m-auto p-2">
+      <div class="card-body">
+        {{ include('news/_form.html.twig') }}
+      </div>
+    </div>
+  </div>
+
+{% else %}
+  <div class="text-center m-5">
+    <h2>Vous n'avez pas les droits!</h2>
+    <a type="button" class="btn btn-danger m-4" href="{{ path('app_home') }}">Retour accueil</a>
+  </div>
+{% endif %}
+
+{% endblock %}

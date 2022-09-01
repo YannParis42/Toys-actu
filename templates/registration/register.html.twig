@@ -1,0 +1,39 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}S'enregistrer{% endblock %}
+
+{% block content %}
+<div class="m-4">
+    <h1 class="h3 mb-3 font-weight-normal">Création de compte</h1>
+    <hr>
+    <div class="m-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"> Nouveau compte </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                        {{ form_start(registrationForm) }}
+
+                        {{ form_row(registrationForm.username) }}
+                        <div class="my-2">
+                            {{ form_row(registrationForm.plainPassword) }}
+                        </div>
+                        {{ form_row(registrationForm.agreeTerms) }}
+
+                        <button type="submit" class="btn btn-success">Création</button>
+                        {{ form_end(registrationForm) }}
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+
+        <hr>
+        <a type="button" class="btn btn-primary mt-2" href="{{ path('app_login') }}">Retour</a>
+    </div>
+</div>
+{% endblock %}

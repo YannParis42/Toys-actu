@@ -1,0 +1,22 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Actus par catégories{% endblock %}
+
+{% block content %}
+<div class="m-4 ">
+    <h1>{{categorie.label}}</h1>
+    <hr>
+    <a type="button" class="btn btn-primary " href="{{ path('app_home') }}">Retour</a>
+    <hr>
+
+    <div class='container m-auto'>
+        <div class="row justify-content-center">
+            {% for actu in actu %}
+            {% include "/common/_card_actu.html.twig" %}
+            {% else %}
+            <h2 class="text-center">Pas d'actualités pour cette catégorie</h2>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

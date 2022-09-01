@@ -1,0 +1,47 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+
+<div class="mx-4 content">
+    <h1>{{ news.title }}</h1>
+    <p>par: {{ news.createdBy.username }}, publié le: {{ news.releaseDate ? news.releaseDate|date('d-m-Y ') : '' }}</p>
+    <p>catégories:
+        {% for categories in news.categories %}
+        {{categories.label}}
+        {% endfor %}
+    </p>
+    {% if app.user and app.user.id == news.createdBy.id %}
+    <hr>
+    <tr>
+        <div class="d-flex">
+            <p>Actions:</p>
+            <a type="button" class="btn btn-warning mx-2" href="{{ path('app_news_edit', {'id': news.id}) }}"><i
+                    class="fa-solid fa-pen"></i></a>
+            {% include "/news/_delete_form.html.twig" %}
+        </div>
+    </tr>
+    {% endif %}
+    <hr>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12  col-lg-6  imageContainer">
+                {% if news.newsPhoto!=0 %}
+                <img src="{{asset('uploads/photo/'~news.newsPhoto)}}" class="card-img-top" alt="{{news.newsPhoto}}">
+                {% else %}
+                <img src="{{asset('uploads/photo/noPhoto.jpg')}}" class="card-img-top mt-2" alt="{{news.newsPhoto}}">
+                {% endif %}
+            </div>
+
+            <div class="col-12 col-lg-6 description p-4">
+                <h5>{{ news.descriptionLong }}</h5>
+            </div>
+        </div>
+        <hr>
+        <a type="button" class="btn btn-primary mt-2" href="{{ path('app_news_index') }}">Retour</a>
+    </div>
+
+</div>
+{% endblock %}

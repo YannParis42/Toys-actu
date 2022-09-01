@@ -1,0 +1,167 @@
+// général
+.scroll {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: $dark;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: $darkgrey;
+    text-decoration: none;
+}
+a:hover {
+    color: $white;
+}
+
+h2,
+.navbar {
+    font-weight: bold;
+    color: $orange;
+}
+
+.content {
+    margin-bottom: 3rem;
+    background-color: $dark;
+    color: $white;
+}
+
+label{
+    color: $darkgrey;
+}
+
+.d-block {
+    color: $white;
+}
+
+.card-header {
+    background-color: $orange;
+}
+
+span {
+    a {
+        color: $darkgrey;
+    }
+    a:hover {
+        color: $orange;
+    }
+}
+
+// page edit by user
+.edit {
+    border: 2px $dark solid;
+    border-radius: 10px;
+    width: 50rem;
+    background: linear-gradient($orange, $dark);
+    h2, label{
+        color: $white;
+    }
+}
+
+.editImage {
+    img {
+        height: 50%;
+        width: 50%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+}
+
+.orange {
+    color: $orange;
+}
+
+//card actu 
+.cardImg {
+    height: 200px;
+    object-fit: scale-down;
+}
+
+.actu {
+    transition: 0.8s;
+    a,
+    h5,
+    h6,
+    p {
+        text-decoration: none;
+        color: $black;
+    }
+}
+
+.actu:hover {
+    background-color: $orange;
+    h5,
+    h6,
+    p {
+        color: $white;
+    }
+    transform: rotate(5deg);
+    z-index: 1000;
+}
+
+.modified {
+    background-color: $orange;
+}
+
+// navbar et footer
+.lineaireTop {
+    background: linear-gradient($darkgrey, $dark);
+}
+.lineaire {
+    background: linear-gradient($dark, $darkgrey);
+}
+
+.navbar {
+    a {
+        color: $orange;
+    }
+    a:hover {
+        color: $white;
+    }
+}
+
+.logo {
+    transition: 1s;
+    max-height: 3rem;
+    img {
+        object-fit: contain;
+    }
+}
+.logo:hover{
+    transform: rotate(360deg);
+}
+
+.content {
+    min-height: 80vh;
+}
+
+// Affichage de la description de l'image
+.imageContainer {
+    padding: 0;
+    img {
+        border: 2px solid $darkgrey;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+}
+
+.description {
+    background: linear-gradient($orange, $dark);
+    border-radius: 10px;
+}
+
+// carroussel
+.slider {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+.over {
+    z-index: 100;
+    position: absolute;
+    top: 5%;
+    left: 48%;
+}

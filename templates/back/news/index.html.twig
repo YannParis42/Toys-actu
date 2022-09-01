@@ -1,0 +1,92 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+<div class="mx-4 pb-4">
+    <h1>Gérer les actualités</h1>
+    <hr>
+    <a type="button" class="btn btn-primary mb-2" href="{{ path('app_news_new_admin') }}"><i class="fa-solid fa-plus"></i></a>
+    <hr>
+
+    <div class="card card-outline card-primary m-0">
+        <div class="card-header">
+            <h3 class="card-title">Liste des actualités</h3>
+        </div>
+        <div class="card-body">
+            <div class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                            aria-describedby="example2_info">
+                            <thead>
+                                <tr>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Id</th>
+                                    <th class="sorting " tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Title</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Catégories</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Description courte
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Publié le</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Photo</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for news in news %}
+                                <tr class="odd">
+                                    <td>{{ news.id }}</td>
+                                    <td>{{ news.title }}</td>
+                                    <td>         {% for categories in news.categories %}
+                                        {{categories.label}}
+                                        {% endfor %}</td>
+                                    <td>{{ news.descriptionShort }}</td>
+                                    <td>{{ news.releaseDate ? news.releaseDate|date('Y-m-d ') : '' }}</td>
+                                    <td> {% if news.newsPhoto %}
+                                        <i class="fa-solid fa-check "></i>
+                                        {% else %}
+                                        <i class="fa-solid fa-xmark"></i>
+                                        {% endif %}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            {% if is_granted('ROLE_ADMIN') or app.user.id == news.createdBy.id %}
+                                            <a type="button" class="btn btn-warning mx-2"
+                                                href="{{ path('app_news_edit', {'id': news.id}) }}"><i class="fa-solid fa-pen"></i></a>
+                                            {{ include('back/news/_delete_form_back.html.twig') }}
+                    
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">Id</th>
+                                    <th rowspan="1" colspan="1">Title</th>
+                                    <th rowspan="1" colspan="1">Catégories</th>
+                                    <th rowspan="1" colspan="1">Description courte</th>
+                                    <th rowspan="1" colspan="1">Publié le</th>
+                                    <th rowspan="1" colspan="1">Photo</th>
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

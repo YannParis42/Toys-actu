@@ -1,0 +1,25 @@
+{# recherche ajax #}
+
+<ul class="list-group ">
+    {% if news|length == 0 and categories|length == 0  %}
+        <li class="list-group-item">Aucun Résultat</li>
+    {% else %}
+        {% if news|length > 0 %}
+            <li class="list-group-item text-center">----Actualités----</li>
+            {% for new in news %}
+                <a href="{{ path('app_news_show', {'id':actu.id}) }}">
+                <li class="list-group-item list-group-item-action">{{ new.title }}</li>
+                </a>
+            {% endfor %}
+        {% endif %}
+
+        {% if categories|length > 0 %}
+            <li class="list-group-item text-center">----Catégories----</li>
+            {% for category in categories %}
+                <a href="{{path('app_news_category', {'id': cat.id})}}">
+                <li class="list-group-item list-group-item-action">{{ category.label }}</li>
+                </a>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+</ul>

@@ -1,0 +1,9 @@
+{{ form_start(search_form) }}
+<div class="pt-4 d-flex justify-content-center">
+    {{ form_row(search_form.search) }}
+    <div class="ms-2">
+        {{ form_row(search_form.categories)}}
+    </div>
+    <button type="submit" class="btn btn-success ms-2 mb-auto">{{ button_label|default('ok') }}</button>
+</div>
+{{ form_end(search_form) }}

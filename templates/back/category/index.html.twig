@@ -1,0 +1,77 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+{% if is_granted('ROLE_ADMIN') %}
+
+<div class="mx-4 pb-4">
+
+    <h1>Gérer les catégories</h1>
+    <hr>
+    <a type="button" class="btn btn-primary" href="{{ path('app_category_new_admin') }}"><i
+            class="fa-solid fa-plus"></i></a>
+    <hr>
+
+    <div class="card card-outline card-primary m-0">
+        <div class="card-header">
+            <h3 class="card-title">Liste des catégories</h3>
+        </div>
+        <div class="card-body">
+            <div class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                            aria-describedby="example2_info">
+                            <thead>
+                                <tr>
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Label</th>
+                                    <th class="sorting col-1" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for category in categories %}
+                                <tr class="odd">
+                                    <td>{{ category.label }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                            <a type="button" class="btn btn-warning mx-2"
+                                                href="{{ path('app_category_edit', {'id': category.id}) }}"><i
+                                                    class="fa-solid fa-pen"></i></a>
+                                            {{ include('back/category/_delete_form.html.twig') }}
+
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">Label</th>
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="text-center ">
+    <h2>Vous n'avez pas les droits!</h2>
+    <a type="button" class="btn btn-danger m-4" href="{{ path('app_home') }}">Retour accueil</a>
+</div>
+{% endif %}
+{% endblock %}

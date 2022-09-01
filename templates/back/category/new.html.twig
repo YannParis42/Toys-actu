@@ -1,0 +1,22 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+{% is is_granted('ROLE_ADMIN') %}
+<div class="ms-4">
+    <h1>Nouvelle catégorie</h1>
+    <hr>
+
+    {{ include('category/_form.html.twig') }}
+
+    <a <a type="button" class="btn btn-primary"  href="{{ path('app_home') }}">Accueil</a>
+</div>
+
+{% else %}
+<div class="text-center m-5">
+  <h2>Vous n'avez pas les droits!</h2>
+<a type="button" class="btn btn-danger m-4" href="{{ path('app_home') }}">Retour accueil</a>
+</div>
+{% endif %}
+{% endblock %}

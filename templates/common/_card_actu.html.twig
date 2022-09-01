@@ -1,0 +1,14 @@
+<div class="card actu m-2" style="width: 18rem;">
+  <a href="{{ path('app_news_show', {'id':actu.id}) }}" class="card-body">
+    {% if  actu.newsPhoto %}
+    <img src="{{asset('uploads/photo/'~actu.newsPhoto)}}" class="card-img-top mt-2 cardImg" alt="{{actu.newsPhoto}}">
+    {% else %}
+    <img src="{{asset('uploads/photo/noPhoto.jpg')}}" class="card-img-top mt-2 cardImg">
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{actu.title}}</h5><br>
+      <h6 class="card-text mb-2 ">{{actu.releaseDate| date('d F Y')}}</h6>
+      <p class="card-text">{{actu.descriptionShort}}</p>
+    </div>
+  </a>
+</div>

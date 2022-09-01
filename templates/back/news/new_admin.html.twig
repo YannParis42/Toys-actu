@@ -1,0 +1,24 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+<div class="mx-4">
+    <h1>Nouvelle actualité</h1>
+    <hr>
+    <div class="card card-outline card-warning">
+        <div class="card-header">
+          <h3 class="card-title">Ajouter</h3>
+          <!-- /.card-tools -->
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            {{ include('news/_form.html.twig') }}
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+      <hr>
+      <a type="button" class="btn btn-primary " href="{{ path('app_news_index') }}">Retour</a>
+</div>
+{% endblock %}

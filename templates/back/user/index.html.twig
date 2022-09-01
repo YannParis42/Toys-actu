@@ -1,0 +1,66 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+{% if is_granted('ROLE_ADMIN') %}
+
+<div class="mx-4 pb-4">
+    <h1>Utilisateurs</h1>
+
+    <div class="card card-outline card-primary m-0">
+        <div class="card-header">
+            <h3 class="card-title">Liste des utilisateurs</h3>
+        </div>
+        <div class="card-body">
+            <div class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                            aria-describedby="example2_info">
+                            <thead>
+                                <tr>
+                                    <th class="sorting sorting_asc col-1" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Id</th>
+                                    <th class="sorting col-8" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Username</th>
+                                    <th class="sorting col-3" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Roles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr class="odd">
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">Id</th>
+                                    <th rowspan="1" colspan="1">Username</th>
+                                    <th rowspan="1" colspan="1">Roles</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="text-center m-5">
+    <h2>Vous n'avez pas les droits!</h2>
+    <a type="button" class="btn btn-danger m-4" href="{{ path('app_home') }}">Retour accueil</a>
+</div>
+{% endif %}
+{% endblock %}

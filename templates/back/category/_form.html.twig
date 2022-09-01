@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+<div class="col-4">{{ form_row(form.label) }}</div>
+
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-warning my-2">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

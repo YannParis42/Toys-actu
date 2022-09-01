@@ -1,0 +1,68 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <p data-widget="pushmenu" href="#" role="button" class="brand-link pushmenu text-end">
+    <img src="{{asset('uploads/logo.png')}}" class="brand-image-xs logo-xl" style="left: 12px">
+    <i class="fa-solid fa-arrow-left"></i>
+  </p>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="info">
+        <p class="d-block">Bonjour</p>
+        <h3 class="d-block ">{{app.user.username}}</h3>
+      </div>
+    </div>
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+        <li class="nav-item">
+          <a href="{{ path('app_admin_news', {'id': app.user.id}) }}" class="nav-link active">
+            <i class="fa-solid fa-newspaper"></i>
+            <p>Accueil</p>
+          </a>
+        </li>
+
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link active">
+            <i class="fa-solid fa-angles-down"></i>
+            <p>Index</p>
+          </a>
+
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{path('app_news_index')}}" class="nav-link active">
+                <i class="fa-solid fa-newspaper"></i>
+                <p>
+                  index Actualités
+                </p>
+              </a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+              <a href="{{path('app_category_index')}}" class="nav-link active">
+                <i class="fa-solid fa-dna"></i>
+                <p>
+                  index Catégories
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{path('app_user_index')}}" class="nav-link active">
+                <i class="fa-solid fa-users"></i>
+                <p>
+                  index Utilisateurs
+                </p>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+
+        </li>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

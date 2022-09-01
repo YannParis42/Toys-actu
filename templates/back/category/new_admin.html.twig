@@ -1,0 +1,32 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+{% if is_granted('ROLE_ADMIN') %}
+
+<div class="mx-4">
+  <h1>Nouvelle catégorie</h1>
+  <hr>
+  <div class="card card-outline card-warning">
+    <div class="card-header">
+      <h3 class="card-title">Ajouter</h3>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      {{ include('back/category/_form.html.twig') }}
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  <hr>
+  <a type="button" class="btn btn-primary " href="{{ path('app_category_index') }}">Retour</a>
+</div>
+{% else %}
+<div class="text-center m-5">
+  <h2>Vous n'avez pas les droits!</h2>
+  <a type="button" class="btn btn-danger m-4" href="{{ path('app_home') }}">Retour accueil</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block content %}
+<div class="mx-4">
+    <h1>Modifier Actualité</h1>
+    <hr>
+
+    <div class="card card-outline card-warning">
+        <div class="card-header">
+            <h3 class="card-title">Modifier</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            {% if news.newsPhoto %}
+            <h2>Image actuelle:</h2>
+            <div class="editImage">
+                <img src="{{asset('uploads/photo/'~news.newsPhoto)}}" alt="{{news.newsPhoto}}">
+            </div>
+            <hr>
+            {% endif %}
+            {{ include('news/_form.html.twig', {'button_label': 'Modifier'}) }}
+            {{ include('back/news/_delete_form_back.html.twig') }}
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+    <hr>
+    <a type="button" class="btn btn-primary mb-2" href="{{ path('app_news_index') }}">Retour</a>
+</div>
+{% endblock %}

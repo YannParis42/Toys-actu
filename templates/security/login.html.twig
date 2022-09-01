@@ -1,0 +1,94 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<div class="m-4">
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <hr>
+    <form method="post">
+        {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <div class="m-4">
+            {% if app.user %}
+
+            <div class="card">
+                <div class="card-header d-flex">
+                    <h3 class="card-title"> Vous êtes connecté sous: {{ app.user.userIdentifier }}</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ app.user.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ app.user.username }}</td>
+                            </tr>
+                            <tr>
+                                <th>Roles</th>
+                                <td>{{ app.user.roles ? app.user.roles|json_encode : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="badge text-bg-warning">
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    </span>
+                    {# <span class="badge text-bg-warning">
+                        <a href="{{ path('app_user_edit', {'id':app.user.id}) }}">Modifier mon compte</a>
+                    </span>
+                    <span class="badge text-bg-warning">
+                        <a href="{{ path('app_user_delete', {'id':app.user.id}) }}">Supprimer mon compte</a>
+                    </span> #}
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            {% else %}
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"> Formulaire de connexion </h3>
+                    <div class="card-tools">
+
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <label for="inputUsername">Nom d'utilisateur</label>
+                            <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
+                                class="form-control" autocomplete="username" required autofocus>
+                            <label for="inputPassword">Mot de passe</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control"
+                                autocomplete="current-password" required>
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <button class="btn btn-lg btn-success mt-2" type="submit">
+                                Connexion
+                            </button>
+
+                        </tbody>
+                    </table>
+                    <span class="badge text-bg-warning">
+                        <a href="{{ path('app_register') }}">Pas de compte?</a>
+                    </span>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            {% endif %}
+            <hr>
+            <a type="button" class="btn btn-primary mt-2" href="{{ path('app_home') }}">Retour</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

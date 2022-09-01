@@ -1,0 +1,26 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Mes actus{% endblock %}
+
+{% block content %}
+<div class="m-4">
+    <h1>Mes actualités</h1>
+    <hr>
+    <a type="button" class="btn btn-primary" href="{{ path('app_home') }}">Retour</a>
+    <a type="button" class="btn btn-primary" href="{{ path('app_news_new') }}"><i class="fa-solid fa-plus"></i></a>
+    <hr>
+    <div class='container'>
+
+        <div class="row justify-content-center">
+            {% for actu in actuUser %}
+            {% include "/common/_card_actu_edit.html.twig" %}
+            {% else %}
+            <tr>
+                <td colspan="7">Pas encore d'actualités pour cet utilisateur</td>
+            </tr>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

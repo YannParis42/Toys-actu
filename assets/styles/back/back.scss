@@ -1,0 +1,23 @@
+.info {
+    h3,
+    p {
+        color: $white;
+    }
+}
+
+.editImage {
+    img {
+        height: 50%;
+        width: 50%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+}
+
+// couleurs pour check photo
+.fa-xmark {
+    color: $red;
+}
+.fa-check {
+    color: $green;
+}
