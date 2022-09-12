@@ -4,6 +4,7 @@
 }
 
 body {
+    height: 100%;
     background-color: $dark;
     margin: 0;
     padding: 0;
@@ -27,6 +28,7 @@ h2,
     margin-bottom: 3rem;
     background-color: $dark;
     color: $white;
+    min-height: 100vh;
 }
 
 label{
@@ -112,6 +114,7 @@ span {
 }
 .lineaire {
     background: linear-gradient($dark, $darkgrey);
+    position: sticky;
 }
 
 .navbar {
@@ -146,12 +149,22 @@ span {
         object-fit: contain;
         border-radius: 10px;
     }
+    // &:hover + .description {
+    //     transform: scale(1);
+       // }
 }
 
 .description {
     background: linear-gradient($orange, $dark);
     border-radius: 10px;
+    // transform: scale(0.1);
+    // transition: transform 2s ease-in-out;
+    // overflow: hidden;
 }
+
+// .description:hover {
+//     transform: scale(1);
+// }
 
 // carroussel
 .slider {
@@ -164,4 +177,10 @@ span {
     position: absolute;
     top: 5%;
     left: 48%;
+}
+
+.fade-in-image { animation: fadeIn 5s; }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
