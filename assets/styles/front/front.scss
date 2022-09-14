@@ -15,7 +15,7 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: $white;
+    color: $black;
 }
 
 h2,
@@ -50,6 +50,10 @@ span {
     a:hover {
         color: $orange;
     }
+}
+
+.dropdown-item{
+    color: $orange !important;
 }
 
 // page edit by user
@@ -117,6 +121,10 @@ span {
     position: sticky;
 }
 
+.dropdown-item :hover{
+    color: $black !important;
+}
+
 .navbar {
     a {
         color: $orange;
@@ -161,10 +169,6 @@ span {
     // transition: transform 2s ease-in-out;
     // overflow: hidden;
 }
-
-// .description:hover {
-//     transform: scale(1);
-// }
 
 // carroussel
 .slider {

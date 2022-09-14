@@ -47,7 +47,6 @@ class News
     {
         return $this->getCreatedBy()?->getId();
     }
-   
     // getter setter   
     public function getId(): ?int
     {

@@ -20,7 +20,6 @@ class NewsVoter extends Voter
     public const VIEW = 'POST_VIEW';
     protected function supports(string $attribute, $subject): bool
     {
-     
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
         return in_array($attribute, [self::EDIT, self::VIEW])
